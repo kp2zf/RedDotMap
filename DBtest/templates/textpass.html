@@ -7,10 +7,10 @@
     <p id="demo"></p>
     <script>
         var jsonstring = "{{data}}"; //data passed from flask
-        jsonstring = jsonstring.replace(/&#34;/g, "\"") //replace &#34; with "
-        var jsondata = JSON.parse(jsonstring)
-        var data = jsondata.data //take "data" field only
-        
+        jsonstring = jsonstring.replace(/&#34;/g, "\""); //replace &#34; with "
+        var jsondata = JSON.parse(jsonstring);
+        var data = jsondata.data; //take "data" field only
+
         document.getElementById("demo").innerHTML = data[1];
     </script>
 </body>
