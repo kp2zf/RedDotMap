@@ -1,1 +1,4 @@
 DBtest/events.csv
+**.csv
+*.csv
+**/*.csv
