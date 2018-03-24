@@ -1,0 +1,99 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<title>Show Google Map with Latitude and Longitude in asp.net website</title>
+	<style type="text/css">
+	html { height: 100% }
+	body { height: 100%; margin: 0; padding: 0 }
+	#map_canvas { height: 100% }
+</style>
+<script type="text/javascript"
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOHvH4oWuREojfdAfwD79SiYDDKBwsKdg">
+</script>
+<script type="text/javascript">
+
+function initialize() {
+	var myLatlng = new google.maps.LatLng(38.0356,-78.5034);
+	var myOptions = {
+		zoom:15,
+		center: myLatlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	map = new google.maps.Map(document.getElementById("gmap"), myOptions);
+	// marker refers to a global variable
+	marker = new google.maps.Marker({
+		position: myLatlng,
+		map: map
+	});
+	// if center changed then update lat and lon document objects
+	google.maps.event.addListener(map, 'center_changed', function () {
+		var location = map.getCenter();
+		document.getElementById("lat").value = location.lat();
+
+		document.getElementById("lon").value = location.lng();
+		// call function to reposition marker location
+		placeMarker(location);
+	});
+	// if zoom changed, then update document object with new info
+	google.maps.event.addListener(map, 'zoom_changed', function () {
+		zoomLevel = map.getZoom();
+		document.getElementById("zoom_level").innerHTML = zoomLevel;
+	});
+	// double click on the marker changes zoom level
+	google.maps.event.addListener(marker, 'dblclick', function () {
+		zoomLevel = map.getZoom() + 1;
+		if (zoomLevel == 20) {
+			zoomLevel = 10;
+		}
+		document.getElementById("zoom_level").innerHTML = zoomLevel;
+		map.setZoom(zoomLevel);
+	});
+
+	function placeMarker(location) {
+		var clickedLocation = new google.maps.LatLng(location);
+		marker.setPosition(location);
+	}
+}
+window.onload = function () { initialize() };
+</script>
+<style>
+div#gmap {
+	width: 80%;
+	height: 500px;
+	border:double;
+}
+</style>
+</head>
+
+<body>
+	<form method=post id="form1" runat="server">
+		<center>
+			<!-- MAP HOLDER -->
+			<div id="gmap"></div>
+			<!-- REFERENCES -->
+
+			lat:<input type='text' name='lat' id='lat'>
+			lon:<input type='text' name='lon' id='lon'>
+			<br>
+			Text: <input type=text name=test value="text">
+			<br>
+			Time: <input type=datetime-local name=time value="123">
+			<br>
+			Red:<input type="radio" id="red" name="color" value="red" checked="checked">
+			Green:<input type="radio" id="green" name="color" value="green">
+			<br>
+			Description: <input type="textbox" name="desc" value="descs">
+			<br>
+			<input type=submit name="filter" value="Submit">
+
+
+		</center>
+
+	</form>
+</body>
+
+</html>
