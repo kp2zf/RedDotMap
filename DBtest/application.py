@@ -56,6 +56,24 @@ def display_page_gradient():
 def display_final():
     global dataDF
     dataDF = dataDF[['color', 'lat', 'lon', 'desc', 'date']]
+    if request.method == 'POST':
+        color = request.form['color']
+        lat = request.form['lat']
+        lon = request.form['lon']
+        desc = request.form['desc']
+        date = request.form['date']
+
+        tmp_dict = {"color":color,"lat":lat,"lon":lon,"desc":desc,"date":date}
+        tmp_arr = [tmp_dict]
+        tempDF = pandas.DataFrame(tmp_arr)
+        dataDF = pandas.concat([dataDF, tempDF])
+        print(dataDF)
+
+        #write tp scv to save
+        info = ",".join([color,lat,lon,desc,date])
+        with open('events.csv','a') as events:
+            events.write(info + "\n")
+        #print(info)
     return render_template('dot/dot_two.html', data=dataDF.to_json(orient='split'))
 
 @application.route('/index2', methods=['GET', 'POST'])

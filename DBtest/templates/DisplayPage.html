@@ -357,7 +357,7 @@
                   });
                 }
 
-                google.maps.event.addListener(marker, "click", (function (marker, i) {
+                google.maps.event.addListener(marker, "click", (function (markerDot, i) {
                     return function() {
                         infowindow.setContent(data[i][3]);
                         infowindow.open(map, marker);
