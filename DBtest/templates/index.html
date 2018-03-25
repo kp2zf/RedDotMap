@@ -53,7 +53,6 @@ function initialize() {
 	});
 
 	function placeMarker(location) {
-		//var clickedLocation = new google.maps.LatLng(location);
 		marker.setPosition(location);
 	}
 }
@@ -75,8 +74,8 @@ div#gmap {
 			<div id="gmap"></div>
 			<!-- REFERENCES -->
 
-			lat:<input type='text' name='lat' id='lat' required>
-			lon:<input type='text' name='lon' id='lon' required>
+			lat:<input type='text' name='lat' id='lat' value='38.0356' required>
+			lon:<input type='text' name='lon' id='lon' value='-78.5034' required>
 			<br>
 			Date: <input type='date' id='datepick' name='date' required>
 			<br>
