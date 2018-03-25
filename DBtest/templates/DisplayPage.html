@@ -12,6 +12,9 @@
   <body>
     <h3>RedDot Map Demo</h3>
     <div id="map"></div>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOHvH4oWuREojfdAfwD79SiYDDKBwsKdg&callback=initMap">
+    </script>
     <script>
         function initMap() {
             var jsonstring = "{{data}}"; //data passed from flask
@@ -20,9 +23,9 @@
             var jsondata = JSON.parse(jsonstring);
             var data = jsondata.data; //take "data" field only
 
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 8,
-                center: location,
+            var options = {
+                zoom: 15,
+                center: new google.maps.LatLng(38.0356,-78.5034),
                 styles:
                         [
                           {
@@ -326,12 +329,15 @@
                             ]
                           }
                         ]
+                    }
 
-            });
+            var map = new google.maps.Map(document.getElementById('map'), options);
 
             var infowindow = new google.maps.InfoWindow();
 
             for (i = 0; i < data.length; i++){
+                console.log(data[i]);
+                console.log(parseFloat(data[i][3]) +","+ parseFloat(data[i][4]))
                 if (data[i][0] == "green"){
                     var IconType = "http://maps.google.com/mapfiles/ms/icons/green.png";
                 }
@@ -340,22 +346,20 @@
                 }
 
                 var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(parseFloat(data[i][1]), parseFloat(events[i][2])),
+                    position: new google.maps.LatLng(parseFloat(data[i][3]), parseFloat(data[i][4])),
                     map: map,
                     icon: IconType
                 });
 
                 google.maps.event.addListener(marker, "click", (function (marker, i) {
                     return function() {
-                        infowindow.setContent(data[i][3]);
+                        infowindow.setContent(data[i][2]);
                         infowindow.open(map, marker);
                         }
                     })(marker, i));
                 }
             }
     </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOHvH4oWuREojfdAfwD79SiYDDKBwsKdg&callback=initMap">
-    </script>
+
   </body>
 </html>

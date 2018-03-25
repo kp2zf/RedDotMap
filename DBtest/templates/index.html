@@ -33,7 +33,6 @@ function initialize() {
 	google.maps.event.addListener(map, 'center_changed', function () {
 		var location = map.getCenter();
 		document.getElementById("lat").value = location.lat();
-
 		document.getElementById("lon").value = location.lng();
 		// call function to reposition marker location
 		placeMarker(location);
@@ -78,8 +77,6 @@ div#gmap {
 
 			lat:<input type='text' name='lat' id='lat' required>
 			lon:<input type='text' name='lon' id='lon' required>
-			<br>
-			Text: <input type=text name=test value="text" required>
 			<br>
 			Time: <input type=datetime-local name=time value="123" required>
 			<br>
