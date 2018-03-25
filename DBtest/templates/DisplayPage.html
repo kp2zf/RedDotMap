@@ -345,15 +345,21 @@
                     var IconType = "http://maps.google.com/mapfiles/ms/icons/red.png";
                 }
 
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(parseFloat(data[i][3]), parseFloat(data[i][4])),
-                    map: map,
-                    icon: IconType
-                });
+                var dateAdded = data[i][4];
+                var dateExpires = new Date(dateAdded);
+                dateExpires.setDate(dateExpires.getDate()+7);
+                var today = new Date();
+                if (dateExpires > today){
+                  var marker = new google.maps.Marker({
+                      position: new google.maps.LatLng(parseFloat(data[i][1]), parseFloat(data[i][2])),
+                      map: map,
+                      icon: IconType
+                  });
+                }
 
                 google.maps.event.addListener(marker, "click", (function (marker, i) {
                     return function() {
-                        infowindow.setContent(data[i][2]);
+                        infowindow.setContent(data[i][3]);
                         infowindow.open(map, marker);
                         }
                     })(marker, i));

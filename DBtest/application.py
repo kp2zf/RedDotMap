@@ -44,5 +44,10 @@ def display_page():
     global dataDF
     return render_template('DisplayPage.html', data=dataDF.to_json(orient='split'))
 
+@application.route('/displaypagegradient', methods=['GET', 'POST'])
+def display_page_gradient():
+    global dataDF
+    return render_template('DisplayPageGradient.html', data=dataDF.to_json(orient='split'))
+
 if __name__ == '__main__':
     application.run(debug=True)
