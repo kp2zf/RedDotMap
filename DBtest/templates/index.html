@@ -78,8 +78,21 @@ div#gmap {
 			lat:<input type='text' name='lat' id='lat' required>
 			lon:<input type='text' name='lon' id='lon' required>
 			<br>
-			Time: <input type=datetime-local name=time value="123" required>
+			Date: <input type='date' id='datepick' name=date required>
 			<br>
+			<script type=text/javascript>
+				today = new Date();
+				var yyyy = today.getYear()+1900;
+				var mm = today.getMonth()+1;
+				var dd = today.getDate();
+				if(mm<10){
+					mm = "0" + mm;
+				}
+				if(dd<10){
+					dd = "0" + dd;
+				}
+				document.getElementById('datepick').value = (yyyy+"-"+mm+"-"+dd);
+			</script>
 			Red:<input type="radio" id="red" name="color" value="red" checked="checked">
 			Green:<input type="radio" id="green" name="color" value="green">
 			<br>
