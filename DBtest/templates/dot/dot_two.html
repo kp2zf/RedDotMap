@@ -769,6 +769,9 @@ function initialize() {
         }
 
 }
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
 window.onload = function () { initialize() };
 </script>
 <style>
@@ -806,7 +809,7 @@ padding: 0px
 
         <br>
 
-        <form method="post" id="form1" runat="server" onsubmit="setTimeout(function () { window.location.reload(true); }, 100)">
+        <form method="post" id="form1" runat="server" onsubmit="setTimeout(function () { window.location.reload(true); }, 25)">
             <center>
                 <h2>Submit A New Dot</h2>
                 <br>
