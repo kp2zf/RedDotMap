@@ -37,21 +37,7 @@ function initialize() {
 		// call function to reposition marker location
 		placeMarker(location);
 	});
-	// if zoom changed, then update document object with new info
-	google.maps.event.addListener(map, 'zoom_changed', function () {
-		zoomLevel = map.getZoom();
-		document.getElementById("zoom_level").innerHTML = zoomLevel;
-	});
-	// double click on the marker changes zoom level
-	google.maps.event.addListener(marker, 'dblclick', function () {
-		zoomLevel = map.getZoom() + 1;
-		if (zoomLevel == 20) {
-			zoomLevel = 10;
-		}
-		document.getElementById("zoom_level").innerHTML = zoomLevel;
-		map.setZoom(zoomLevel);
-	});
-
+	
 	function placeMarker(location) {
 		marker.setPosition(location);
 	}
