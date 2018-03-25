@@ -801,16 +801,12 @@ padding: 0px
             </div>
         </nav>
         <section class="home-section home-full-height bg-dark-30" id="home">
-
-            <section id="map" class="wrapper style1 special">
-                <div id="mapDisplay"></div>
-
-            </section>
+             <div id="mapDisplay"></div>
         </section>
 
         <br>
 
-        <form method="post" id="form1" runat="server">
+        <form method="post" id="form1" runat="server" onsubmit="setTimeout(function () { window.location.reload(true); }, 100)">
             <center>
                 <h2>Submit A New Dot</h2>
                 <br>
