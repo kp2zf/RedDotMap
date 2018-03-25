@@ -5,7 +5,9 @@ import pandas
 
 application = Flask(__name__)
 
-dataDF = pandas.DataFrame(columns=["colors","lat","lon","desc","date"])
+dataDF = pandas.DataFrame(columns=["color","lat","lon","desc","date"])
+with open('events.csv','r') as events:
+    dataDF=pandas.read_csv(events)
 
 
 @application.route('/', methods=['GET', 'POST'])
@@ -18,7 +20,7 @@ def form_data():
         desc = request.form['desc']
         date = request.form['date']
 
-        tmp_dict = {"colors":color,"lat":lat,"lon":lon,"desc":desc,"date":date}
+        tmp_dict = {"color":color,"lat":lat,"lon":lon,"desc":desc,"date":date}
         tmp_arr = [tmp_dict]
         tempDF = pandas.DataFrame(tmp_arr)
         dataDF = pandas.concat([dataDF, tempDF])
