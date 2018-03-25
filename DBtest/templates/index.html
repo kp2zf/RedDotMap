@@ -53,7 +53,7 @@ function initialize() {
 	});
 
 	function placeMarker(location) {
-		var clickedLocation = new google.maps.LatLng(location);
+		//var clickedLocation = new google.maps.LatLng(location);
 		marker.setPosition(location);
 	}
 }
@@ -78,7 +78,7 @@ div#gmap {
 			lat:<input type='text' name='lat' id='lat' required>
 			lon:<input type='text' name='lon' id='lon' required>
 			<br>
-			Date: <input type='date' id='datepick' name=date required>
+			Date: <input type='date' id='datepick' name='date' required>
 			<br>
 			<script type=text/javascript>
 				today = new Date();

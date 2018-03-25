@@ -5,7 +5,7 @@ import pandas
 
 application = Flask(__name__)
 
-dataDF = pandas.DataFrame(columns=["colors","lat","lon","desc","datetime"])
+dataDF = pandas.DataFrame(columns=["colors","lat","lon","desc","date"])
 
 
 @application.route('/', methods=['GET', 'POST'])
@@ -16,16 +16,16 @@ def form_data():
         lat = request.form['lat']
         lon = request.form['lon']
         desc = request.form['desc']
-        datetime = request.form['time']
+        date = request.form['date']
 
-        tmp_dict = {"colors":color,"lat":lat,"lon":lon,"desc":desc,"datetime":datetime}
+        tmp_dict = {"colors":color,"lat":lat,"lon":lon,"desc":desc,"date":date}
         tmp_arr = [tmp_dict]
         tempDF = pandas.DataFrame(tmp_arr)
         dataDF = pandas.concat([dataDF, tempDF])
         print(dataDF)
 
         #write tp scv to save
-        info = ",".join([color,lat,lon,desc,datetime])
+        info = ",".join([color,lat,lon,desc,date])
         with open('events.csv','a') as events:
             events.write(info + "\n")
         #print(info)
