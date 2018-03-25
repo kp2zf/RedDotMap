@@ -1247,11 +1247,15 @@ General Styles - Owlcarousel
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 11px;
-  transition: background, padding 0.4s ease-in-out 0s;
 }
 
 .navbar a {
-  transition: color 0.125s ease-in-out 0s;
+}
+.navbar-text navbar-left {
+ font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
 }
 
 .navbar-custom .dropdown-menu {
@@ -1304,7 +1308,7 @@ General Styles - Owlcarousel
 .navbar-custom .dropdown-menu > li > a:focus,
 .navbar-custom .dropdown-menu > li > a:hover {
   background: none;
-  color: #fff;
+  color: rgba(10, 10, 10, 0.9);
 }
 
 .navbar-custom .dropdown-menu > li > a:hover {
@@ -2915,6 +2919,11 @@ Google map
   .align-left-sm {
     text-align: left;
   }
+  .divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
 }
 
 @media only screen and (max-width: 480px) {
