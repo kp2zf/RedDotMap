@@ -14,7 +14,7 @@ A red dot event is when a person is put in an emotionally, mentally, or physical
 While **RedDotGreenDot** is built with a focus on Web 2.0 sensibilities (user-generated content, lightweight design, etc.), smart code also allows it to accomomdate a range of user characteristics, ranging from interoperability between browsers to CSS based rescaling.
 
 #### Collaborative Focus Based on Shared Values
-From the use of a single Github branch to increase team dialogue to the diverse team itself, **Title** has truly been built to serve the needs of its users. It facilitates the transfer, analysis, and discussion of critical information for the wider UVA community. 
+From the use of a single Github branch to increase team dialogue to the diverse team itself, **RedDotGreenDot** has truly been built to serve the needs of its users. It facilitates the transfer, analysis, and discussion of critical information for the wider UVA community. 
 
 #### User-Oriented UX
 Data entry is made simple and intuitive through the use of clean, familiar archetypes as well as paradigm-shifting data visualization for full information transfer.
@@ -25,6 +25,10 @@ Data entry is made simple and intuitive through the use of clean, familiar arche
 Heatmap:
 
 https://stackoverflow.com/questions/31342602/google-heat-map-change-colour-based-on-intensity (http://jsfiddle.net/hzy0y6es/) for how to make a heatmap with binary data
+
+Refresh Page with Javascript:
+
+https://stackoverflow.com/questions/18920651/how-can-i-refresh-a-form-page-after-the-form-submits-to-blank for adding a delay when nothing else worked
 
 
 <sup>1</sup> The data is protected from further user inputs but can be changed server-side to remove personal information.
