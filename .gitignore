@@ -4,3 +4,4 @@ DBtest/events.csv
 **/*.csv
 
 *.csv
+.idea/workspace.xml
