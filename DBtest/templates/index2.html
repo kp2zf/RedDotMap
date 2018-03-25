@@ -1,0 +1,409 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<title>Show Google Map with Latitude and Longitude in asp.net website</title>
+	<style type="text/css">
+	html { height: 100% }
+	body { height: 100%; margin: 0; padding: 0 }
+	#map_canvas { height: 100% }
+</style>
+<script type="text/javascript"
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOHvH4oWuREojfdAfwD79SiYDDKBwsKdg">
+</script>
+<script type="text/javascript">
+
+function initialize() {
+	var myLatlngInput = new google.maps.LatLng(38.0356,-78.5034);
+	var optionsInput = {
+		zoom:15,
+		center: myLatlngInput,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	var optionsDisplay = {
+		zoom: 14,
+		center: new google.maps.LatLng(38.0356,-78.5034),
+		styles:
+				[
+				  {
+					"elementType": "geometry",
+					"stylers": [
+					  {
+						"color": "#ebe3cd"
+					  }
+					]
+				  },
+				  {
+					"elementType": "labels.text.fill",
+					"stylers": [
+					  {
+						"color": "#523735"
+					  }
+					]
+				  },
+				  {
+					"elementType": "labels.text.stroke",
+					"stylers": [
+					  {
+						"color": "#f5f1e6"
+					  }
+					]
+				  },
+				  {
+					"featureType": "administrative",
+					"stylers": [
+					  {
+						"visibility": "off"
+					  }
+					]
+				  },
+				  {
+					"featureType": "administrative",
+					"elementType": "geometry.stroke",
+					"stylers": [
+					  {
+						"color": "#c9b2a6"
+					  }
+					]
+				  },
+				  {
+					"featureType": "landscape.natural",
+					"elementType": "geometry",
+					"stylers": [
+					  {
+						"color": "#dfd2ae"
+					  }
+					]
+				  },
+				  {
+					"featureType": "poi",
+					"stylers": [
+					  {
+						"visibility": "off"
+					  }
+					]
+				  },
+				  {
+					"featureType": "poi",
+					"elementType": "geometry",
+					"stylers": [
+					  {
+						"color": "#dfd2ae"
+					  }
+					]
+				  },
+				  {
+					"featureType": "poi",
+					"elementType": "labels.text",
+					"stylers": [
+					  {
+						"visibility": "simplified"
+					  }
+					]
+				  },
+				  {
+					"featureType": "poi",
+					"elementType": "labels.text.fill",
+					"stylers": [
+					  {
+						"color": "#93817c"
+					  }
+					]
+				  },
+				  {
+					"featureType": "poi.park",
+					"elementType": "geometry",
+					"stylers": [
+					  {
+						"visibility": "simplified"
+					  }
+					]
+				  },
+				  {
+					"featureType": "poi.park",
+					"elementType": "geometry.fill",
+					"stylers": [
+					  {
+						"color": "#D3D3D3"
+					  }
+					]
+				  },
+				  {
+					"featureType": "poi.park",
+					"elementType": "labels.text.fill",
+					"stylers": [
+					  {
+						"color": "#447530"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road",
+					"stylers": [
+					  {
+						"visibility": "simplified"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road",
+					"elementType": "geometry.fill",
+					"stylers": [
+					  {
+						"color": "#ffffff"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road",
+					"elementType": "geometry.stroke",
+					"stylers": [
+					  {
+						"color": "#ffffff"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road",
+					"elementType": "labels",
+					"stylers": [
+					  {
+						"color": "#000000"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road",
+					"elementType": "labels.icon",
+					"stylers": [
+					  {
+						"visibility": "off"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road",
+					"elementType": "labels.text",
+					"stylers": [
+					  {
+						"color": "#806b63"
+					  },
+					  {
+						"lightness": 35
+					  }
+					]
+				  },
+				  {
+					"featureType": "road.arterial",
+					"elementType": "geometry",
+					"stylers": [
+					  {
+						"color": "#fdfcf8"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road.arterial",
+					"elementType": "labels",
+					"stylers": [
+					  {
+						"visibility": "off"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road.highway",
+					"elementType": "geometry",
+					"stylers": [
+					  {
+						"color": "#ffffff"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road.highway.controlled_access",
+					"stylers": [
+					  {
+						"visibility": "off"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road.highway.controlled_access",
+					"elementType": "geometry",
+					"stylers": [
+					  {
+						"color": "#e98d58"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road.highway.controlled_access",
+					"elementType": "geometry.stroke",
+					"stylers": [
+					  {
+						"color": "#db8555"
+					  }
+					]
+				  },
+				  {
+					"featureType": "road.local",
+					"elementType": "labels",
+					"stylers": [
+					  {
+						"visibility": "off"
+					  }
+					]
+				  },
+				  {
+					"featureType": "transit",
+					"stylers": [
+					  {
+						"visibility": "off"
+					  }
+					]
+				  },
+				  {
+					"featureType": "transit.line",
+					"elementType": "geometry",
+					"stylers": [
+					  {
+						"color": "#dfd2ae"
+					  }
+					]
+				  },
+				  {
+					"featureType": "transit.line",
+					"elementType": "labels.text.fill",
+					"stylers": [
+					  {
+						"color": "#8f7d77"
+					  }
+					]
+				  },
+				  {
+					"featureType": "transit.line",
+					"elementType": "labels.text.stroke",
+					"stylers": [
+					  {
+						"color": "#ebe3cd"
+					  }
+					]
+				  },
+				  {
+					"featureType": "transit.station",
+					"elementType": "geometry",
+					"stylers": [
+					  {
+						"color": "#dfd2ae"
+					  }
+					]
+				  },
+				  {
+					"featureType": "water",
+					"stylers": [
+					  {
+						"visibility": "simplified"
+					  }
+					]
+				  },
+				  {
+					"featureType": "water",
+					"elementType": "geometry.fill",
+					"stylers": [
+					  {
+						"color": "#b9d3c2"
+					  }
+					]
+				  },
+				  {
+					"featureType": "water",
+					"elementType": "labels.text.fill",
+					"stylers": [
+					  {
+						"color": "#92998d"
+					  }
+					]
+				  }
+				]
+			}
+
+	mapInput = new google.maps.Map(document.getElementById("mapInput"), optionsInput);
+	mapDisplay = new google.maps.Map(document.getElementById("mapDisplay"), optionsDisplay);
+	// marker refers to a global variable
+	marker = new google.maps.Marker({
+		position: myLatlngInput,
+		map: mapInput
+	});
+	// if center changed then update lat and lon document objects
+	google.maps.event.addListener(mapInput, 'center_changed', function () {
+		var location = map.getCenter();
+		document.getElementById("lat").value = location.lat();
+		document.getElementById("lon").value = location.lng();
+		// call function to reposition marker location
+		placeMarker(location);
+	});
+
+	function placeMarker(location) {
+		marker.setPosition(location);
+	}
+}
+window.onload = function () { initialize() };
+</script>
+<style>
+div#mapInput {
+	width: 80%;
+	height: 500px;
+	border:double;
+}
+div#mapDisplay {
+  width: 50%;
+  height: 400px;
+  background-color: grey;
+}
+</style>
+</head>
+
+<body>
+	<div id="mapDisplay"></div>
+	<form method=post id="form1" runat="server">
+		<center>
+			<!-- MAP HOLDER -->
+			<div id="mapInput"></div>
+			<!-- REFERENCES -->
+
+			<input type='hidden' name='lat' id='lat' value='38.0356' required>
+			<input type='hidden' name='lon' id='lon' value='-78.5034' required>
+			<br>
+			Date: <input type='date' id='datepick' name='date' required>
+			<br>
+			<script type=text/javascript>
+				today = new Date();
+				var yyyy = today.getYear()+1900;
+				var mm = today.getMonth()+1;
+				var dd = today.getDate();
+				if(mm<10){
+					mm = "0" + mm;
+				}
+				if(dd<10){
+					dd = "0" + dd;
+				}
+				document.getElementById('datepick').value = (yyyy+"-"+mm+"-"+dd);
+			</script>
+			Red:<input type="radio" id="red" name="color" value="red" checked="checked">
+			Green:<input type="radio" id="green" name="color" value="green">
+			<br>
+			Description: <input type="textbox" name="desc" value="descs" required>
+			<br>
+			<input type=submit name="filter" value="Submit">
+
+
+		</center>
+
+	</form>
+</body>
+
+</html>

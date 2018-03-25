@@ -52,5 +52,17 @@ def display_page_gradient():
     dataDF = dataDF[['color', 'lat', 'lon', 'desc', 'date']]
     return render_template('DisplayPageGradient.html', data=dataDF.to_json(orient='split'))
 
+@application.route('/final', methods=['GET', 'POST'])
+def display_final():
+    global dataDF
+    dataDF = dataDF[['color', 'lat', 'lon', 'desc', 'date']]
+    return render_template('dot/dot_two.html', data=dataDF.to_json(orient='split'))
+
+@application.route('/index2', methods=['GET', 'POST'])
+def display_index2():
+    global dataDF
+    dataDF = dataDF[['color', 'lat', 'lon', 'desc', 'date']]
+    return render_template('index2.html', data=dataDF.to_json(orient='split'))
+
 if __name__ == '__main__':
     application.run(debug=True)
