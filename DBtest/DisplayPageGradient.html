@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body, #map {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+</head>
+<body>
+<div id = "map"></div>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
+<script>
+function initialize() {
+  var map = new google.maps.Map(document.getElementById("map"), {
+  	center:new google.maps.LatLng(40.785091,-73.968285),
+    zoom:11,
+    mapTypeId: "roadmap"
+  });
+
+  var data = [["green", "date", "desc", "40.7483", "-73.9929"], ["red","date", "desc", "40.7164","-73.9882"]]
+
+	for (i = 0; i < data.length; i++) {
+  	place(data[i])
+  }
+
+	function place(point) {
+  	var hotSpot = new google.maps.LatLng(point[3], point[4])
+
+    var heatMapData = [
+    	{location: hotSpot, weight: 1}
+    ];
+		var heatmap = new google.maps.visualization.HeatmapLayer({
+    	data: heatMapData,
+      radius: 50,
+      dissapating: false
+    });
+    var colorInt = 0;
+    if (point[0] == "red") {
+        colorInt = 1
+    }
+    var gradient = [
+        'rgba('+255*colorInt+', '+255*(1-colorInt)+', 0, 0)',
+        'rgba('+255*colorInt+', '+255*(1-colorInt)+', 0, 1)'];
+    heatmap.set('gradient', gradient);
+    heatmap.setMap(map);
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</body>
+</html>
