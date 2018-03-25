@@ -37,16 +37,19 @@ def form_data():
 @application.route('/textpass', methods=['GET', 'POST'])
 def text_pass():
     global dataDF
+    dataDF = dataDF[['color','lat','lon','desc','date']]
     return render_template('textpass.html', data=dataDF.to_json(orient='split'))
 
 @application.route('/displaypage', methods=['GET', 'POST'])
 def display_page():
     global dataDF
+    dataDF = dataDF[['color', 'lat', 'lon', 'desc', 'date']]
     return render_template('DisplayPage.html', data=dataDF.to_json(orient='split'))
 
 @application.route('/displaypagegradient', methods=['GET', 'POST'])
 def display_page_gradient():
     global dataDF
+    dataDF = dataDF[['color', 'lat', 'lon', 'desc', 'date']]
     return render_template('DisplayPageGradient.html', data=dataDF.to_json(orient='split'))
 
 if __name__ == '__main__':
